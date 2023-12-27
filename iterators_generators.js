@@ -110,3 +110,29 @@ console.log(fooArr);
 for (let el of fooArr) {
   console.log(el);
 }
+
+// --- Iterator Protocol ---
+
+// Iterable object
+let arrIter = ["foo", "bar"];
+
+// Iterator factory
+console.log(arrIter[Symbol.iterator]);
+
+// Iterator
+let iter = arrIter[Symbol.iterator]();
+console.log(iter);
+
+// Performing iteration
+console.log(iter.next());
+console.log(iter.next());
+console.log(iter.next());
+
+// One time ordered Traversal
+let iter1 = arrIter[Symbol.iterator]();
+let iter2 = arrIter[Symbol.iterator]();
+
+console.log(iter1.next());
+console.log(iter2.next());
+console.log(iter2.next());
+console.log(iter1.next());
