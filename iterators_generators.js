@@ -136,3 +136,33 @@ console.log(iter1.next());
 console.log(iter2.next());
 console.log(iter2.next());
 console.log(iter1.next());
+
+// custom Interators
+// Define an object with an array of elements
+const customObject = {
+  elements: [1, 2, 3, 4, 5],
+
+  // Define a emthod to vreate an iterator
+  [Symbol.iterator]: function () {
+    let index = 0;
+
+    // Define the next method for the iterator
+    return {
+      next: () => {
+        if (index < this.elements.length) {
+          return {
+            value: this.elements[index++],
+            done: false,
+          };
+        } else {
+          return { done: true };
+        }
+      },
+    };
+  },
+};
+
+// Iterate over the element using the custom iterator
+for (const element of customObject) {
+  console.log(element);
+}
